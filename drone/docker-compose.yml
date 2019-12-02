@@ -1,0 +1,34 @@
+version: '2'
+services:
+  drone:
+      image: drone/drone:1.1
+      volumes:
+      - drone_data:/data
+      environment:
+        - DRONE_SERVER_HOST=ci.jamcity.com
+        - DRONE_SERVER_PROTO=https
+        - DRONE_TLS_AUTOCERT=false
+        - DRONE_USER_FILTER=mindjolt
+        - DRONE_RPC_SECRET=correct-horse
+        - DRONE_GIT_ALWAYS_AUTH=true
+        - DRONE_GITHUB_SKIP_VERIFY=true
+        - DRONE_REPOSITORY_FILTER=mindjolt,brooklynpacket,pnapoliJC
+        - DRONE_USER_CREATE=username:pnapoliJC,admin:true
+        - DRONE_AGENTS_ENABLED=true
+      ports:
+          - "80:80"
+      restart: unless-stopped
+  agent:
+    image: drone/agent:1.1
+    command: agent
+    restart: unless-stopped
+    depends_on:
+      - drone
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_RUNNER_CAPACITY=3
+      - DRONE_RPC_SERVER=http://drone
+      - DRONE_RPC_SECRET=correct-horse
+volumes:
+    drone_data:
