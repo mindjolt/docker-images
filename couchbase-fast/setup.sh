@@ -11,12 +11,12 @@ until [[ $(check_db) = 0 ]]; do
   sleep 1
 done
 
-couchbase-cli cluster-init --cluster-username=gs --cluster-password=admin123 --cluster-port=8091 --cluster-ramsize=1024 --cluster-index-ramsize=1024 --services=data,index,query
+couchbase-cli cluster-init --cluster-username=gs --cluster-password=admin123 --cluster-port=8091 --cluster-ramsize=1280 --cluster-index-ramsize=1280 --services=data,index,query
 
-couchbase-cli bucket-create -c localhost --bucket=gs --bucket-type=couchbase --bucket-ramsize=100 -u gs -p admin123
-couchbase-cli bucket-create -c localhost --bucket=edms --bucket-type=couchbase --bucket-ramsize=100 -u gs -p admin123
-couchbase-cli bucket-create -c localhost --bucket=admin-new --bucket-type=couchbase --bucket-ramsize=100 -u gs -p admin123
-couchbase-cli bucket-create -c localhost --bucket=data --bucket-type=couchbase --bucket-ramsize=100 -u gs -p admin123
+couchbase-cli bucket-create -c localhost --bucket=gs --bucket-type=couchbase --bucket-ramsize=512 -u gs -p admin123
+couchbase-cli bucket-create -c localhost --bucket=edms --bucket-type=couchbase --bucket-ramsize=256 -u gs -p admin123
+couchbase-cli bucket-create -c localhost --bucket=admin-new --bucket-type=couchbase --bucket-ramsize=256 -u gs -p admin123
+couchbase-cli bucket-create -c localhost --bucket=data --bucket-type=couchbase --bucket-ramsize=256 -u gs -p admin123
 
 sleep 10
 
