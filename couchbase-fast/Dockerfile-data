@@ -1,0 +1,10 @@
+FROM sgn0/couchbase-fast
+
+ADD data/data.tar.gz /opt/couchbase/sample-data
+
+COPY scripts/entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["couchbase-server"]
+
+EXPOSE 8091 8092 8093 8094 8095 8096 11207 11210 11211 18091 18092 18093 18094 18095 18096
+

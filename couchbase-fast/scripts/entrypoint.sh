@@ -51,6 +51,20 @@ overridePort "ssl_proxy_upstream_port"
             exit 1
         fi
     fi
+
+    # check for data and set if first time
+    echo Check for data
+    if [ -e /opt/couchbase/sample-data ]; then
+      echo -n Sample data exists
+      if [ ! -e /opt/couchbase/var/lib/done ]; then
+        echo ", copying data"
+        cp -r /opt/couchbase/sample-data/data/lib /opt/couchbase/var
+        touch /opt/couchbase/var/lib/done
+      else
+        echo " but not needed"
+      fi
+    fi
+
     echo "Starting Couchbase Server -- Web UI available at http://<ip>:$restPortValue"
     echo "and logs available in /opt/couchbase/var/lib/couchbase/logs"
     exec /usr/sbin/runsvdir-start
