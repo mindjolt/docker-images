@@ -37,3 +37,6 @@ cp ~/Downloads/2020-08-14T070001Z.tgz ./data/backup.tgz
 
 docker build --squash --no-cache -t sgn0/couchbase-fast:dev-stagedata -f ./Dockerfile-restore .
 ```
+
+The data can be downloaded from the following S3 Bucket: `jc-staging-couchbase`
+
