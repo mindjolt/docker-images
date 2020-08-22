@@ -14,7 +14,7 @@ done
 sleep 15
 echo Restoring data
 
-cbrestore -t 4 -u gs -p admin123 -b jcl -B admin-new /backup/data/ http://localhost:8091
+cbrestore -x data_only=1 -vv -t 4 -u gs -p admin123 -b jcl -B admin-new /backup/data/ http://localhost:8091
 
 sleep 10
 
