@@ -1,0 +1,15 @@
+FROM sgn0/couchbase-fast
+
+EXPOSE 8091 8092 8093 8094 8095 8096 11207 11210 11211 18091 18092 18093 18094 18095 18096
+
+ADD setup-data.sh /opt/couchbase/setup-data.sh
+RUN mkdir /backup
+ADD data/backup.tgz /backup/
+
+RUN mv /backup/* /backup/t && \
+  mv /backup/t/* /backup/data && \
+  rm -rf /backup/t && \
+  /opt/couchbase/setup-data.sh && \
+  rm /opt/couchbase/setup-data.sh && \
+  rm -rf /backup
+
