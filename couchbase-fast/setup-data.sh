@@ -18,4 +18,5 @@ cbrestore -x data_only=1 -vv -t 4 -u gs -p admin123 -b jcl -B admin-new /backup/
 
 sleep 10
 
+cbq -e http://localhost:8093 -u gs -p admin123 -s "update \`admin-new\` set jclConfigUrl='http://config:7002/v1' where meta().id like 'game:%' and jclConfigUrl is not null;"
 
