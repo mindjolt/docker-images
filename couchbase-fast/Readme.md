@@ -27,13 +27,30 @@ This will set the data into `./data/data.tar.gz`. Now you can run the following 
 docker build --no-cache -t sgn0/couchbase-fast:dev-data -f ./Dockerfile-data .
 ```
 
+When the data is ready to push and share, run docker push:
+
+```bash
+docker push sgn0/couchbase-fast:dev-data 
+```
+
 ### Stage backup
 
 When using a backup from stage, you can run the following the load the data to an image:
 
 ```bash
 # copy data to data directory
-cp ~/Downloads/2020-08-14T070001Z.tgz ./data/backup.tgz
+#cp ~/Downloads/2020-08-14T070001Z.tgz ./data/backup.tgz
+
+# testing
+BUCKET=bucket-jcl
+(\
+  mkdir $BUCKET && \
+  cd $BUCKET && \
+  aws s3 sync s3://jc-staging-couchbase/2020-12-04T080001Z/2020-12-04T080001Z-full/$BUCKET/ .
+)
+tar zcvf $BUCKET.tar.gz $BUCKET
+rm -rf $BUCKET
+mv $BUCKET.tar.gz data/backup.tgz
 
 docker build --squash --no-cache -t sgn0/couchbase-fast:dev-stagedata -f ./Dockerfile-restore .
 ```

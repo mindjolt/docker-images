@@ -9,5 +9,29 @@ update `admin-new`
 delete from `admin-new` 
   where 1=1
   and id not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ] 
-  and gameId not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ];
+  and gameId not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ]
+  limit 100000;
 
+delete from `admin-new` 
+  where 1=1
+  and id not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ] 
+  and gameId not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ]
+  limit 100000;
+
+delete from `admin-new` 
+  where 1=1
+  and id not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ] 
+  and gameId not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ]
+  limit 100000;
+
+delete from `admin-new` 
+  where 1=1
+  and id not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ] 
+  and gameId not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ]
+  limit 100000;
+
+delete from `admin-new` 
+  where 1=1
+  and id not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ] 
+  and gameId not in [ 'RCtsaqZa', 'Vp3rAN0S', 'kLZzwAUj' ]
+  limit 100000;
